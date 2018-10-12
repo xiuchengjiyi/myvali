@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qf.admin.mapper.UserMapper">
+    <select id="selectAll" resultType="com.qf.admin.model.User">
+        select id,username,password,name,sex,age,phone,email,address from user
+    </select>
+    <select id="selectById" resultType="com.qf.admin.model.User" parameterType="java.lang.Integer">
+        select id,username,password,name,sex,age,phone,email,address from user where id = #{id}
+    </select>
+
+    <select id="selectByPage" resultType="com.qf.admin.model.User" parameterType="java.util.Map">
+        select id,username,password,name,sex,age,phone,email,address from user
+        <where>
+            <if test="search != null and search != ''">
+                concat(ifnull(id,""),ifnull(username,""),ifnull(password,""),ifnull(name,""),ifnull(sex,""),
+                ifnull(age,""),ifnull(phone,""),ifnull(email,""),ifnull(address,"")) like "%${search}%"
+            </if>
+        </where>
+        limit #{offset},#{limit}
+    </select>
+
+    <select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+        select count(id) from user
+        <where>
+            <if test="search != null and search != ''">
+                concat(ifnull(id,""),ifnull(username,""),ifnull(password,""),ifnull(name,""),ifnull(sex,""),
+                ifnull(age,""),ifnull(phone,""),ifnull(email,""),ifnull(address,"")) like "%${search}%"
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="com.qf.admin.model.User">
+        insert into user values (null,#{username},#{password},#{name},#{sex},#{age}
+        ,#{phone},#{email},#{address})
+    </insert>
+
+    <delete id="delete" parameterType="java.lang.Integer">
+        delete from user where id = #{id}
+    </delete>
+
+    <update id="update" parameterType="com.qf.admin.model.User">
+        update user set username=#{username},password=#{password},name=#{name},sex=#{sex},
+        age=#{age},phone=#{phone},email=#{email},address=#{address} where id=#{id}
+    </update>
+</mapper>
