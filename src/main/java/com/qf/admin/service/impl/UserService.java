@@ -19,38 +19,87 @@ public class UserService implements IUserService {
     private UserMapper mapper;
 
     @Override
+    @Transactional(readOnly = true)
     public List<User> findAll() {
-        return mapper.selectAll();
+        List<User> users = null;
+        try {
+            users = mapper.selectAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return users;
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<User> findByPage(JSONObject jsonObject) {
-        return mapper.selectByPage(jsonObject);
+        List<User> users = null;
+        try {
+            users = mapper.selectByPage(jsonObject);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return users;
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Long findCount(JSONObject jsonObject) {
-        return mapper.selectCount(jsonObject);
+        Long count = 0L;
+        try {
+            count = mapper.selectCount(jsonObject);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return count;
     }
 
     @Override
+    @Transactional(readOnly = true)
     public User findById(Integer id) {
-        return mapper.selectById(id);
+        User user = null;
+        try {
+            user = mapper.selectById(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return user;
     }
 
     @Override
     public void save(User user) {
-        mapper.insert(user);
+        try {
+            mapper.insert(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void remove(Integer id) {
-        mapper.delete(id);
+        try {
+            mapper.delete(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void removeUsers(List<Integer> ids) {
+        try {
+            mapper.deleteUsers(ids);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void modify(User user) {
-        mapper.update(user);
+        try {
+            mapper.update(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

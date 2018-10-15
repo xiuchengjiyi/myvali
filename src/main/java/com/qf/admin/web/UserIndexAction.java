@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class UserIndexAction {
     @Autowired
@@ -25,7 +27,6 @@ public class UserIndexAction {
     @ResponseBody
     @RequestMapping(value = "/users",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
     public Object dataJson(@RequestBody JSONObject jsonObject){
-        System.out.println(jsonObject);
         jsonObject = service.getUserList(jsonObject);
         return jsonObject;
     }
@@ -40,6 +41,13 @@ public class UserIndexAction {
     @ResponseBody
     public String deleteUser(Integer id){
         service.remove(id);
+        return "0";
+    }
+
+    @RequestMapping(value = "/user/deleteUsers",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public String deleteUsers(@RequestBody List<Integer> ids){
+        service.removeUsers(ids);
         return "0";
     }
 

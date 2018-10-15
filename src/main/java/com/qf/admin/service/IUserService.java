@@ -20,6 +20,8 @@ public interface IUserService {
 
    void remove(Integer id);
 
+   void removeUsers(List<Integer> ids);
+
    void modify(User user);
 
    JSONObject getUserList(JSONObject jsonObject);

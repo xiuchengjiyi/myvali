@@ -28,8 +28,11 @@
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css"
           href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/css/bootstrapValidator.css">
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
 </head>
 <body class="app sidebar-mini rtl">
 <!-- Navbar-->
@@ -192,149 +195,93 @@
         </li>
     </ul>
 </aside>
-<div id="myModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
-     aria-labelledby="myLargeModalLabel">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="myModalTitle">新增用户</h4>
-            </div>
-            <div class="modal-body">
-                <form onsubmit="return false" class="createForm" method="post" id="myForm" accept-charset="utf-8"
-                      action="${pageContext.request.contextPath}/user/createUser">
-                    <input id="id" type="hidden" name="id" value="">
-                    <div class="form-group">
-                        <label for="username" class="col-sm-2 control-label">用户名</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="username2" name="username" placeholder="请输入用户名">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="password" class="col-sm-2 control-label">密码</label>
-                        <div class="col-sm-10">
-                            <input type="password" class="form-control" id="password2" name="password"
-                                   placeholder="Password">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">姓名</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="name2" name="name" placeholder="请输入真实姓名">
-                        </div>
-                    </div>
-                    <div class="form-group" style="padding-left: 15px">
-                        <label>性别</label>
-                        <label class="radio-inline">
-                            <input type="radio" name="sex" value="1"> 男
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="sex" value="0"> 女
-                        </label>
-                    </div>
-                    <div class="form-group">
-                        <label for="age" class="col-sm-2 control-label">年龄</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="age2" name="age" placeholder="请输入年龄">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone" class="col-sm-2 control-label">电话</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="phone2" name="phone" placeholder="请输入电话">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="col-sm-2 control-label">邮箱</label>
-                        <div class="col-sm-10">
-                            <input type="email" class="form-control" id="email2" name="email" placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="address" class="col-sm-2 control-label">地址</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="address2" name="address" placeholder="请输入地址">
-                        </div>
-                    </div>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="submit" class="btn btn-primary" data-dismiss="modal" id="addUser">确定</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="myModal2" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
-     aria-labelledby="myLargeModalLabel">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="myModalTitle2">编辑用户</h4>
-            </div>
-            <div class="modal-body">
-                <form onsubmit="return false" class="createForm" method="post" id="editForm" accept-charset="utf-8"
-                      action="${pageContext.request.contextPath}/user/createUser">
-                    <input id="id" type="hidden" name="id" value="">
-                    <div class="form-group">
-                        <label for="username" class="col-sm-2 control-label">用户名</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="username" name="username" placeholder="请输入用户名">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="password" class="col-sm-2 control-label">密码</label>
-                        <div class="col-sm-10">
-                            <input type="password" class="form-control" id="password" name="password"
-                                   placeholder="Password">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">姓名</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="请输入真实姓名">
-                        </div>
-                    </div>
-                    <div class="form-group" style="padding-left: 15px">
-                        <label>性别</label>
-                        <label class="radio-inline">
-                            <input type="radio" name="sex" id="sex1" value="1"> 男
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="sex" id="sex2" value="0"> 女
-                        </label>
-                    </div>
-                    <div class="form-group">
-                        <label for="age" class="col-sm-2 control-label">年龄</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="age" name="age" placeholder="请输入年龄">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone" class="col-sm-2 control-label">电话</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="phone" name="phone" placeholder="请输入电话">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="col-sm-2 control-label">邮箱</label>
-                        <div class="col-sm-10">
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="address" class="col-sm-2 control-label">地址</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="address" name="address" placeholder="请输入地址">
-                        </div>
-                    </div>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="submit" class="btn btn-primary" data-dismiss="modal" id="editUser">确定</button>
-                </form>
-            </div>
-
-        </div>
-    </div>
-</div>
 <main class="app-content">
+    <div class="app-title">
+        <div>
+            <h1><i class="fa fa-th-list"></i> 欢迎来到用户管理系统</h1>
+            <p>Welcome to Management System</p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb side">
+            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+            <li class="breadcrumb-item">Tables</li>
+            <li class="breadcrumb-item active"><a href="#">Data Table</a></li>
+        </ul>
+    </div>
+    <div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalTitle">添加用户</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" id="myForm">
+                        <input id="id" name="id" type="hidden">
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label">用户名</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="username" name="username"
+                                       placeholder="请输入用户名">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="col-sm-2 control-label">密码</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="password" name="password"
+                                       placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">姓名</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="请输入真实姓名">
+                            </div>
+                        </div>
+                        <div class="form-group" style="padding-left: 15px">
+                            <label>性别</label>
+                            <label class="radio-inline">
+                                <input type="radio" name="sex" id="sex1" value="1"> 男
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="sex" id="sex2" value="0"> 女
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label for="age" class="col-sm-2 control-labe">年龄</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="age" name="age" placeholder="请输入年龄">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="col-sm-2 control-label">电话</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="phone" name="phone" placeholder="请输入电话">
+                            </div>
+                        </div>
+                        <%--<div class="form-group">--%>
+                            <%--<label for="email" class="col-sm-2 control-label">邮箱</label>--%>
+                            <%--<div class="col-sm-10">--%>
+                                <%--<input type="email" class="form-control" id="email" name="email" placeholder="Email">--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                        <div class="form-group">
+                            <label for="address" class="col-sm-2 control-label">地址</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="address" name="address" placeholder="请输入地址">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" id="add_user_form_close">
+                                关闭
+                            </button>
+                            <button type="submit" class="btn btn-primary" id="add_user_form_save">保存</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-md-12">
@@ -350,6 +297,7 @@
 </main>
 <!-- Essential javascripts for application to work-->
 <script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/jquery.validate.min.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
@@ -362,118 +310,233 @@
 <%--<script type="text/javascript">$('#sampleTable').DataTable();</script>--%>
 <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.js"></script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.js"></script>
+<script src="js/bootstrap-table-zh-CN.min.js"></script>
 <script type="text/javascript">
+    $("#myForm").validate({
+        rules: {
+            username: "required",
+            password:{required: true, minlength: 6, maxlength: 20},
+            name: "required",
+            age: "required",
+            sex: "required",
+            phone: {isphoneNum: true},
+            email: {email: true}
+        },
+        messages: {
+            username: "用户名不能为空",
+            password:{required: "请输入密码", minlength: "密码长度应在6-20之间", maxlength: "密码长度应在6-20之间"},
+            name: "姓名不能为空",
+            age: "年龄不能为空",
+            sex: "性别不能为空",
+            phone: {isphoneNum: "请输入正确的手机号"},
+            email: {email: "请输入正确的邮箱"}
+        },
+        submitHandler: function () {
+            var user_data = $("#myForm").serialize();
+            var method = $("#myModalTitle").text();
+            if (method == "添加用户") {
+                var url = "user/createUser";
+                $.ajax({
+                    url:url,
+                    dataType:"text",
+                    type:"POST",
+                    data:user_data,
+                    success:function (msg) {
+                        alert("添加成功");
+                        $("#add_user_form_close").trigger("click");
+                        $("#mytable").bootstrapTable("refresh");
+                    }
+                });
+            } else {
+                var url = "user/editUser";
+                if(confirm("确定编辑吗？")){
+                    $.ajax({
+                        url:url,
+                        dataType:"text",
+                        type:"POST",
+                        data:user_data,
+                        success:function (msg) {
+                            $("#add_user_form_close").trigger("click");
+                            $("#mytable").bootstrapTable("refresh");
+                        }
+                    });
+                }
+            }
+        }
+    });
+
+    //自定义手机号验证
+    jQuery.validator.addMethod("isphoneNum", function (value, element) {
+        debugger
+        var length = value.length;
+        var mobile = /^1[3|5|8]{1}[0-9]{9}$/;
+        return this.optional(element) || (length == 11 && mobile.test(value));
+    }, "请正确填写您的手机号码");
+
+    $("#createUser").click(function () {
+        $("#myModalTitle").text("添加用户");
+        //数据回显
+        $("#id").val("");
+        $("#username").val("");
+        $("#password").val("");
+        $("#name").val("");
+        $("#sex1").attr("checked", false);
+        $("#sex2").attr("checked", false);
+        $("#age").val("");
+        $("#phone").val("");
+        $("#email").val("");
+        $("#address").val("");
+        $("#myModal").modal({
+            backdrop: "static"
+        });
+    });
+
+    //批量删除
+    $("#deleteUser").click(function () {
+        var idList = new Array();
+        var rows = $("#mytable").bootstrapTable("getSelections");
+        if(rows.length == 0){
+            alert("请至少选择一条数据！");
+            return;
+        }
+        for(var i = 0;i<rows.length;i++){
+            idList.push(rows[i].id);
+        }
+        // $(rows).each(function (index) {
+        //     idList.push(this.id);
+        // });
+        // var nickname = "";
+        var url = "user/deleteUsers";
+        if(confirm("确定要删除吗？")){
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: "text",
+                contentType: "application/json",
+                data: JSON.stringify(idList),
+                // data:{ids:idList},
+                success: function (value) {
+                    $("#mytable").bootstrapTable("refresh");
+                }
+            });
+        }
+    });
     $(function () {
         //初始化表格
         $("#mytable").bootstrapTable({
             //列参数
             columns: [
-                {field: 'state', checkbox: true},
+                {field: 'state', checkbox: true, align:'center'},
                 {
                     title: '序号', formatter: function (value, row, index) {
                         return index + 1;
-                    }
+                    },align:'center'
                 },
                 {field: 'name', title: '姓名', sortable: true, align: 'center'},
-                {field: 'sex', title: '性别', sortable: true, align: 'center', formatter: 'changeSex'},
+                {
+                    field: 'sex',
+                    title: '性别',
+                    sortable: true,
+                    align: 'center',
+                    formatter: function (value, row, index) {
+                        if (row.sex == 1) {
+                            value = "男";
+                        } else {
+                            value = "女";
+                        }
+                        return value;
+                    }
+                },
                 {field: 'age', title: '年龄', sortable: true, align: 'center'},
                 {field: 'phone', title: '手机', sortable: true, align: 'center'},
-                {field: 'email', title: '邮箱', sortable: true, align: 'center'},
+                // {field: 'email', title: '邮箱', sortable: true, align: 'center'},
                 {field: 'address', title: '地址', sortable: true, align: 'center'},
                 {
                     field: 'action',
                     title: '操作',
                     // halign: 'center',
                     align: 'center',
-                    formatter: 'actionFormatter',
+                    formatter: function actionFormatter(value, row, index) {
+                        return [
+                            '<button id="edit" type="button" class="edit"  style="background-color:aliceblue">编辑</button>',
+                            '<button id="delete" type="button" class="delete" onclick="deleteUser(row.id)" style="background-color: aliceblue">删除</button>'
+                        ].join('');
+                    },
                     events: 'actionEvents',
                     clickToSelect: false
-                }
-            ],
+                }],
             //要绑定的数据
             //这里绑定的是死数据，如果使用的客户端分页的json格式：[{},{},{}]
             //如果使用的服务端分页,json格式如下：{total:98,rows:[{},{}]}
             //请求地址
+            striped: true,
             url: 'users',
             //请求方式
             method: 'post',
 //              data: [{ id: 1, name: 'Item 1', price: '$1' }, { id: 2, name: 'Item 2', price: '$2' }, { id: 3, name: 'Item 3', price: '$3' }],
             //打开搜索框
             search: true,
+            showColumns: true,
             //按回车键后进行搜索
             searchOnEnterKey: true,
+            showRefresh: true,
+            showPaginationSwitch:true,
+            clickToSelect: true,
             //开启分页功能
             pagination: true,
             //第一次加载第一页
             pageNumber: 1,
             //每页显示条数
-            pageSize: 10,
+            pageSize: 7,
             //分页方式：默认客户端分页，修改为服务端分页
-            sidePagination: 'server'
+            sidePagination: 'server',
+            pageList: [7, 10, 25]
         });
-    });
 
-    function changeSex(value, row, index) {
-        if (row.sex == 1) {
-            value = "男";
-        } else {
-            value = "女";
-        }
-        return value;
-    }
-
-    function actionFormatter(value, row, index) {
-        return [
-            '<button id="edit" type="button" class="edit"  style="background-color: grey">编辑</button>',
-            '<button id="delete" type="button" class="delete" onclick="deleteUser(row.id)" style="background-color: grey">删除</button>'
-        ].join('');
-    }
-
-    window.actionEvents = {
-        //编辑
-        'click .edit': function (e, value, row, index) {
-            $.post(
-                "${pageContext.request.contextPath}/user/findUser",
-                {'id': row.id},
-                function (msg) {
-                    //数据回显
-                    $("#id").val(msg.id);
-                    $("#username").val(msg.username);
-                    $("#password").val(msg.password);
-                    $("#name").val(msg.name);
-                    if (msg.sex == 1) {
-                        $("#sex1").attr("checked", true);
-                    } else {
-                        $("#sex2").attr("checked", true);
-                    }
-                    $("#age").val(msg.age);
-                    $("#phone").val(msg.phone);
-                    $("#email").val(msg.email);
-                    $("#address").val(msg.address);
-                    //弹出模态框
-                    $("#myModal2").modal();
-                },
-                "json"
-            );
-        },
-        'click .delete': function (e, value, row, index) {
-            if (confirm("确认删除吗？")) {
+        window.actionEvents = {
+            //编辑
+            'click .edit': function (e, value, row, index) {
                 $.post(
-                    "${pageContext.request.contextPath}/user/deleteUser",
+                    "${pageContext.request.contextPath}/user/findUser",
                     {'id': row.id},
                     function (msg) {
-                        if (msg) {
-                            $("#mytable").bootstrapTable('refresh');
+                        $("#myModalTitle").text("编辑用户");
+                        //数据回显
+                        $("#id").val(msg.id);
+                        $("#username").val(msg.username);
+                        $("#password").val(msg.password);
+                        $("#name").val(msg.name);
+                        if (msg.sex == 1) {
+                            $("#sex1").attr("checked", true);
+                        } else {
+                            $("#sex2").attr("checked", true);
                         }
+                        $("#age").val(msg.age);
+                        $("#phone").val(msg.phone);
+                        $("#email").val(msg.email);
+                        $("#address").val(msg.address);
+                        //弹出模态框
+                        $("#myModal").modal();
                     },
-                    "text"
+                    "json"
                 );
+            },
+            'click .delete': function (e, value, row, index) {
+                if (confirm("确认删除吗？")) {
+                    $.post(
+                        "${pageContext.request.contextPath}/user/deleteUser",
+                        {'id': row.id},
+                        function (msg) {
+                            if (msg) {
+                                $("#mytable").bootstrapTable('refresh');
+                            }
+                        },
+                        "text"
+                    );
+                }
             }
         }
-    };
-
+    });
 </script>
 <!-- Google analytics script-->
 <script type="text/javascript">
@@ -492,128 +555,6 @@
         ga('create', 'UA-72504830-1', 'auto');
         ga('send', 'pageview');
     }
-    $(function () {
-
-        //点击新增按钮弹出模态框
-        $("#createUser").click(function () {
-            $("#myModal").modal();
-        });
-
-        $("#myForm").bootstrapValidator({
-            message: 'This value is not valid',
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                username: {
-                    message: '用户名验证失败',
-                    validators: {
-                        notEmpty: {
-                            message: '用户名不能为空'
-                        },
-                        stringLength: {
-                            min: 1,
-                            max: 6,
-                            message: '用户名长度必须在6到18位之间'
-                        }
-                    }
-                },
-                password: {
-                    message: '密码验证失败',
-                    validators: {
-                        notEmpty: {
-                            message: '密码不能为空'
-                        },
-                        stringLength: {
-                            min: 6,
-                            max: 12,
-                            message: '密码长度必须在6到18位之间'
-                        },
-                        regexp: {
-                            regexp: /^[a-zA-Z0-9_]+$/,
-                            message: '用户名只能包含大写、小写、数字和下划线'
-                        }
-                    }
-                },
-                name: {
-                    message: '姓名验证失败',
-                    validators: {
-                        notEmpty: {
-                            message: '姓名不能为空'
-                        },
-                        stringLength: {
-                            min: 1,
-                            max: 6,
-                            message: '姓名长度必须在6到18位之间'
-                        }
-                    }
-                },
-                email: {
-                    validators: {
-                        emailAddress: {
-                            message: '邮箱地址格式有误'
-                        }
-                    }
-                },
-                phone: {
-                    validators: {
-                        regexp: {
-                            regexp: /^[1][3,4,5,7,8][0-9]{9}$/,
-                            message: '手机号码格式有误'
-                        }
-                    }
-                }
-            }
-        });
-
-
-        //添加用户提交表单
-        $("#addUser").click(function () {
-            //获取表单对象
-            var bootstrapValidator = $("#myForm").data('bootstrapValidator');
-            //alert(bootstrapValidator);
-            //手动触发验证
-            bootstrapValidator.validate();
-            //alert(bootstrapValidator.validate());
-            if (bootstrapValidator.isValid()) {
-                //表单提交的方法、比如ajax提交
-                var data = $("#myModal").serialize();
-                data = decodeURIComponent(data, true);
-                data = encodeURI(data);
-                $.post(
-                    "${pageContext.request.contextPath}/user/createUser",
-                    data,
-                    function (msg) {
-                        if (msg) {
-                            alert("添加成功");
-                            $("#mytable").bootstrapTable('refresh');
-                        }
-                    },
-                    "text"
-                )
-            }
-        });
-
-        $("#editUser").click(function () {
-            var data2 = $("#myModal .editForm:first").serialize();
-            data2 = decodeURIComponent(data2, true);
-            data2 = encodeURI(data2);
-            if (confirm("确定编辑吗？")) {
-                $.post(
-                    "${pageContext.request.contextPath}/user/editUser",
-                    data2,
-                    function (msg) {
-                        if (msg) {
-                            $("#mytable").bootstrapTable('refresh');
-                        }
-                    },
-                    "text"
-                )
-            }
-        });
-    });
 </script>
 </body>
 </html>

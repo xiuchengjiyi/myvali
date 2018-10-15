@@ -7,18 +7,20 @@ import java.util.List;
 
 public interface UserMapper {
 
-    List<User> selectAll();
+    List<User> selectAll() throws Exception;
 
-    List<User> selectByPage(JSONObject jsonObject);
+    List<User> selectByPage(JSONObject jsonObject) throws Exception;
 
-    Long selectCount(JSONObject jsonObject);
+    Long selectCount(JSONObject jsonObject) throws Exception;
 
-    User selectById(Integer id);
+    User selectById(Integer id) throws Exception;
 
-    void insert(User user);
+    void insert(User user) throws Exception;
 
-    void delete(Integer id);
+    void delete(Integer id) throws Exception;
 
-    void update(User user);
+    void deleteUsers(List<Integer> ids) throws Exception;
+
+    void update(User user) throws Exception;
 
 }

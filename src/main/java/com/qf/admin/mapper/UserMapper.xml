@@ -41,6 +41,13 @@
         delete from user where id = #{id}
     </delete>
 
+    <delete id="deleteUsers" parameterType="java.util.List">
+        delete from user where id in 
+        <foreach collection="list" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
     <update id="update" parameterType="com.qf.admin.model.User">
         update user set username=#{username},password=#{password},name=#{name},sex=#{sex},
         age=#{age},phone=#{phone},email=#{email},address=#{address} where id=#{id}
